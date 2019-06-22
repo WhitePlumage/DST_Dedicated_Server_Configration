@@ -104,13 +104,13 @@ sh start.sh
 [详细配置参考](http://blog.ttionya.com/article-1235.html)
 
 ### 获取 token
-![Step1](https://raw.githubusercontent.com/WhitePlumage/DST_Dedicate_Server_Configration/master/image/Main.png?token=AHY7TOOCNPJ3VLM34VFSY3S5BYTZQ)
+![Step1](./image/Main.png)
 
-![Step2](https://raw.githubusercontent.com/WhitePlumage/DST_Dedicate_Server_Configration/master/image/Webpage1.png?token=AHY7TOOH4DTLHJEIPZ7OJSS5BYTZU)
+![Step2](./image/Webpage1.png)
 
-![Step3](https://raw.githubusercontent.com/WhitePlumage/DST_Dedicate_Server_Configration/master/image/Webpage2.png?token=AHY7TOI5NJEC6NL5EITTPG25BYTZY)
+![Step3](./image/Webpage2.png)
 
-![Step4](https://raw.githubusercontent.com/WhitePlumage/DST_Dedicate_Server_Configration/master/image/Webpage3.png?token=AHY7TOJESUPRV5F3VWKRYZS5BYT66)
+![Step4](./image/Webpage3.png)
 
 将得到的 token 复制备用
 
