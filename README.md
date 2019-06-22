@@ -110,7 +110,7 @@ sh start.sh
 
 ![Step3](https://raw.githubusercontent.com/WhitePlumage/DST_Dedicate_Server_Configration/master/image/Webpage2.png?token=AHY7TOI5NJEC6NL5EITTPG25BYTZY)
 
-![Step4](https://raw.githubusercontent.com/WhitePlumage/DST_Dedicate_Server_Configration/master/image/Webpage3.png?token=AHY7TOOG2JOSLISWVWSA2ZK5BYTFY)
+![Step4](https://raw.githubusercontent.com/WhitePlumage/DST_Dedicate_Server_Configration/master/image/Webpage3.png?token=AHY7TOJESUPRV5F3VWKRYZS5BYT66)
 
 将得到的 token 复制备用
 
