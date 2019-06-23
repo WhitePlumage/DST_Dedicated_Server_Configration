@@ -102,17 +102,6 @@ return {
     configuration_options={ amudiao=true, baodiao=1, kong=0, rendiao=2, zbdiao=true },
     enabled=true 
   },
-  ["workshop-758532836"]={
-    configuration_options={
-      AUTOPAUSECONSOLE=false,
-      AUTOPAUSEMAP=false,
-      AUTOPAUSESINGLEPLAYER=true,
-      ENABLECLIENTPAUSING=false,
-      ENABLEHOTKEY=false,
-      KEYBOARDTOGGLEKEY="P" 
-    },
-    enabled=true 
-  },
   ["workshop-934638020"]={ configuration_options={  }, enabled=true },
   ["workshop-362175979"]={ configuration_options={ ["Draw over FoW"]="disabled" }, enabled=true },
   ["workshop-569043634"]={ configuration_options={  }, enabled=true } 
