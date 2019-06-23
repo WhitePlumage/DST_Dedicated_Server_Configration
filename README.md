@@ -154,6 +154,7 @@ wget https://raw.githubusercontent.com/WhitePlumage/DST_Dedicate_Server_Configra
 cd /home/steamuser/dst/mods
 wget https://raw.githubusercontent.com/WhitePlumage/DST_Dedicate_Server_Configration/master/Scripts/dedicated_server_mods_setup.lua
 ```
+放完之后可以`cd /home/steamuser/.klei/DoNotStarveTogether/MyDediServer && tree`和`cd /home/steamuser/dst/mods && ls`确认一下
 
 ### 再运行一遍脚本
 保证在**steamuser**下运行
