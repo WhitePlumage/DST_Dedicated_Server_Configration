@@ -1,8 +1,8 @@
-useradd -m steamuser && usermod -aG sudo username
+useradd -m steamuser && usermod -aG sudo steamuser
 
 passwd steamuser
 
-mkdir /home/steamuser/Steam && cd /Steam
+mkdir /home/steamuser/Steam && cd /home/steamuser/Steam
 
 curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | tar zxvf -
 
@@ -48,6 +48,6 @@ cd /home/steamuser/dst/mods && ls
 
 su - steamuser
 
-cd /home/steamuser/dst/bin
+cd ~/dst/bin
 
 screen sudo sh start.sh
