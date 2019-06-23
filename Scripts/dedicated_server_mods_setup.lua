@@ -19,7 +19,6 @@ ServerModSetup("375850593")     --Extra Equip Slots
 ServerModSetup("375859599")     --Health Info
 ServerModSetup("378160973")     --Global Positions
 ServerModSetup("661253977")     --Don't Drop Everything
-ServerModSetup("758532836")     --Global Pause
 ServerModSetup("934638020")     --智能灭火器
 ServerModSetup("362175979")     --Wormhole Marks [DST]
 ServerModSetup("569043634")     --Campfire Respawn
