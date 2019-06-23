@@ -10,6 +10,12 @@
 > 
 > [Klei 论坛的教程](https://forums.kleientertainment.com/forums/topic/64441-dedicated-server-quick-setup-guide-linux/)
 
+> 务必一次成功，最后跑不起来就`userdel -fr steamuser`再`reboot`一遍。想关服也`reboot`就行
+> 
+> 搞懂了每条命令具体干什么之后可以参照[只有命令的脚本](https://github.com/WhitePlumage/DST_Dedicated_Server_Configration/blob/master/Scripts/%E8%A7%A3%E5%86%B3%E5%A5%BD%E4%BE%9D%E8%B5%96%E4%B9%8B%E5%90%8E%E7%9A%84%E5%91%BD%E4%BB%A4.sh)（能不能当脚本用就不知道了）
+> 
+> 顺带一提，不管是`ls`还是`tree`在后面加`-a`就可以看见隐藏文件（夹）了
+
 配置过程总的来说，就是在 Linux 上安装 SteamCMD，通过 SteamCMD 安装饥荒专用服务器，并写好（放入）配置文件。文件的结构可以参考本地存档。
 
 这里的操作都基于 Debian 及其发行版 (Ubuntu)。
@@ -59,8 +65,9 @@ mkdir /home/steamuser/Steam && cd /home/steamuser/Steam
 curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | tar zxvf -
 
 su - steamuser
+cd ~/Steam
 
-./steamcmd.sh +login anonymous +force_install_dir /home/steamuser/dst +app_update 343050 validate +quit
+sudo ./steamcmd.sh +login anonymous +force_install_dir /home/steamuser/dst +app_update 343050 validate +quit
 ```
 
 ## 写一个启动脚本
@@ -75,8 +82,8 @@ ldd dontstarve_dedicated_server_nullrenderer
 写入启动脚本，这里不管洞穴只写主世界，保存为 start.sh（名字随意，如果保存不了加 sudo）
 
 ```
-echo ./dontstarve_dedicated_server_nullrenderer -console -cluster MyDediServer -shard Master > start.sh
-sh start.sh
+sudo echo ./dontstarve_dedicated_server_nullrenderer -console -cluster MyDediServer -shard Master > start.sh
+sudo sh start.sh
 ```
 
 脚本会开始运行，待出现 Your Server Will Not Start 字样后，按 Ctrl+C 终止脚本进程。此时运行了一遍没有配置文件的服务器，在 /home/steamuser/ 下有文件夹 .klei 。主要目录结构和本地存档大致相同，如下所示（tree -d 命令）。如果运行了洞穴的启动脚本还会有括号里的 Cave 目录。
@@ -98,7 +105,7 @@ sh start.sh
 
 ```
 exit
-rm -rf ~/.klei/DoNotStarveTogether/Cluster_*
+rm -rf /home/steamuser/.klei/DoNotStarveTogether/Cluster_*
 ```
 
 ## 配置文件
@@ -144,7 +151,7 @@ rm -rf ~/.klei/DoNotStarveTogether/Cluster_*
 ### 放入文件
 
 ```
-cd home/dst/.klei/DoNotStarveTogether/MyDediServer
+cd /home/steamuser/.klei/DoNotStarveTogether/MyDediServer
 wget https://raw.githubusercontent.com/WhitePlumage/DST_Dedicated_Server_Configration/master/Scripts/cluster.ini
 echo [保存的 token_key] > cluster_token.txt
 
@@ -153,6 +160,7 @@ wget https://raw.githubusercontent.com/WhitePlumage/DST_Dedicated_Server_Configr
 wget https://raw.githubusercontent.com/WhitePlumage/DST_Dedicated_Server_Configration/master/Scripts/modoverrides.lua
 
 cd /home/steamuser/dst/mods
+rm dedicated_server_mods_setup.lua*
 wget https://raw.githubusercontent.com/WhitePlumage/DST_Dedicated_Server_Configration/master/Scripts/dedicated_server_mods_setup.lua
 ```
 放完之后可以`cd /home/steamuser/.klei/DoNotStarveTogether/MyDediServer && tree`和`cd /home/steamuser/dst/mods && ls`确认一下
