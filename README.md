@@ -22,7 +22,7 @@
 
 ## 处理依赖库
 
-首先处理依赖库以保证安装的顺利。如果你碰到了什么问题，多半是运行库的锅。注意 Steam 需要的所有库***都是 i386*** 而不是 *amd64* 版的。
+首先处理依赖库以保证安装的顺利。如果你碰到了什么问题，多半是运行库的锅。注意 Steam 需要的所有库**都是 *i386*** 而不是 *amd64* 版的。
 
 按照[Klei 的教程](https://forums.kleientertainment.com/forums/topic/64441-dedicated-server-quick-setup-guide-linux/)，需要的库有libstdc++6，libgcc1，libcurl4-gnutls-dev
 
