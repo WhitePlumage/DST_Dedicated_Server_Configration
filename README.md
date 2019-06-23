@@ -86,11 +86,18 @@ sh start.sh
  ├── Agreements
  │   └── DoNotStarveTogether
  └── DoNotStarveTogether
-     └── MyDediServer
-         ├── Master
-         │   ├── backup
-         │   └── save
-         └── (Cave)
+     ├── MyDediServer
+     │   ├── Master
+     │   │   ├── backup
+     │   │   └── save
+     │   └── (Cave)
+     └── Cluster_1 …
+```
+
+然后再删除多余的目录
+
+```
+rm -rf ~/.klei/DoNotStarveTogether/Cluster_*
 ```
 
 ## 配置文件
@@ -103,19 +110,8 @@ sh start.sh
 - modoverrides.lua (mod 的配置，可以在本地存档里找到)
 [详细配置参考](http://blog.ttionya.com/article-1235.html)
 
-### 获取 token
-![Step1](./image/Main.png)
-
-![Step2](./image/Webpage1.png)
-
-![Step3](./image/Webpage2.png)
-
-![Step4](./image/Webpage3.png)
-
-将得到的 token 复制备用
-
 ```
-/home/dst/.klei/DoNotStarveTogether\MyDediServer
+/home/steamuser/.klei/DoNotStarveTogether/MyDediServer
 ├── cluster.ini
 ├── cluster_token.txt
 ├── (adminlist.txt)
@@ -129,21 +125,43 @@ sh start.sh
     ├── 其他文件
     └── 其他文件夹
 
-/home/dst/dst/mods
+/home/steamuser/dst/mods
 └── dedicated_server_mods_setup.lua
 ```
 
+### 获取 token
+![Step1](./image/Main.png)
 
+![Step2](./image/Webpage1.png)
 
+![Step3](./image/Webpage2.png)
 
+![Step4](./image/Webpage3.png)
 
+将得到的 token 复制到文本编辑器备用
 
+### 放入文件
 
+```
+cd home/dst/.klei/DoNotStarveTogether/MyDediServer
+wget https://raw.githubusercontent.com/WhitePlumage/DST_Dedicate_Server_Configration/master/Scripts/cluster.ini
+echo [复制的 token_key] > cluster_token.txt
 
+cd Master
+wget https://raw.githubusercontent.com/WhitePlumage/DST_Dedicate_Server_Configration/master/Scripts/worldgenoverride.lua
+wget https://raw.githubusercontent.com/WhitePlumage/DST_Dedicate_Server_Configration/master/Scripts/modoverrides.lua
 
+cd /home/steamuser/dst/mods
+wget https://raw.githubusercontent.com/WhitePlumage/DST_Dedicate_Server_Configration/master/Scripts/dedicated_server_mods_setup.lua
+```
 
+### 再运行一遍脚本
+保证在**steamuser**下运行
 
-
+```
+cd /home/steamuser/dst/bin
+screen sudo sh start.sh
+```
 
 
 
