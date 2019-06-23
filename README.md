@@ -10,9 +10,11 @@
 > 
 > [Klei 论坛的教程](https://forums.kleientertainment.com/forums/topic/64441-dedicated-server-quick-setup-guide-linux/)
 
-> 务必一次成功，最后跑不起来就`userdel -fr steamuser`再`reboot`一遍。想关服也`reboot`就行
+> 这里服务器的配置（cluster.ini 等）是我个人的服务器，保存在 [Scripts](https://github.com/WhitePlumage/DST_Dedicated_Server_Configration/tree/master/Scripts) 里，根据需要更改。
 > 
-> 搞懂了每条命令具体干什么之后可以参照[只有命令的脚本](https://github.com/WhitePlumage/DST_Dedicated_Server_Configration/blob/master/Scripts/%E8%A7%A3%E5%86%B3%E5%A5%BD%E4%BE%9D%E8%B5%96%E4%B9%8B%E5%90%8E%E7%9A%84%E5%91%BD%E4%BB%A4.sh)（能不能当脚本用就不知道了）
+> 务必一次成功，最后跑不起来就`userdel -fr steamuser`再`reboot`一遍。想关服也`reboot`就行。
+> 
+> 搞懂了每条命令具体干什么之后可以参照[只有命令的脚本](https://github.com/WhitePlumage/DST_Dedicated_Server_Configration/blob/master/Scripts/%E8%A7%A3%E5%86%B3%E5%A5%BD%E4%BE%9D%E8%B5%96%E4%B9%8B%E5%90%8E%E7%9A%84%E5%91%BD%E4%BB%A4.sh) (不能当真的脚本用的)，拷到文本编辑器里复制命令更加方便。
 > 
 > 顺带一提，不管是`ls`还是`tree`在后面加`-a`就可以看见隐藏文件（夹）了
 
@@ -48,10 +50,9 @@ sudo apt-get install libstdc++6 libgcc1 libcurl4-gnutls-dev
 首先以root登录。添加一个用户 steamuser，并授予 sudo 权限
 
 ```
-useradd -m steamuser && usermod -aG sudo username
+useradd -m steamuser && usermod -aG sudo steamuser
 passwd steamuser
 ```
-（删掉用户重来用`userdel -fr 用户名`）
 
 还是以 root 身份进行下列操作
 1. 进入 steamuser 的主目录，新建一个 Steam 目录用来解压 SteamCMD 的安装包（SteamCMD 安装完会生成一个 Steam 文件夹，所以不如干脆使用 Steam 解压安装包）
@@ -168,10 +169,18 @@ wget https://raw.githubusercontent.com/WhitePlumage/DST_Dedicated_Server_Configr
 ### 再运行一遍脚本
 保证在**steamuser**下运行
 
+screen 是一个让进程以窗口运行的命令,这里用它保持后台运行
+
+> When you do nested screen, you can switch between screen using command “Ctrl-A” and “n”. It will be move to the next screen. When you need to go to the previous screen, just press “Ctrl-A” and “p”.
+> 
+> To create a new screen window, just press “Ctrl-A” and “c”.
+
 ```
-cd /home/steamuser/dst/bin
+cd ~/dst/bin
 screen sudo sh start.sh
 ```
+
+在以 screen 运行了脚本后按 Ctrl+A 之后按一次 c，就可以退出 steamuser 了（不要用 exit，会退出窗口进程，直接输入`su`再输入 root 密码即可）
 
 
 
