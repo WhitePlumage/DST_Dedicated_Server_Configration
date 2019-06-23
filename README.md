@@ -42,7 +42,7 @@ sudo apt-get install libstdc++6 libgcc1 libcurl4-gnutls-dev
 首先以root登录。添加一个用户 steamuser，并授予 sudo 权限
 
 ```
-useradd -m steamuser && sudo usermod -aG sudo username
+useradd -m steamuser && usermod -aG sudo username
 passwd steamuser
 ```
 （删掉用户重来用`userdel -fr 用户名`）
@@ -50,28 +50,27 @@ passwd steamuser
 还是以 root 身份进行下列操作
 1. 进入 steamuser 的主目录，新建一个 Steam 目录用来解压 SteamCMD 的安装包（SteamCMD 安装完会生成一个 Steam 文件夹，所以不如干脆使用 Steam 解压安装包）
 2. 下载安装包并解压
-3. 运行 steamcmd 脚本 + 以匿名账户登录 SteamCMD + 设定安装目录为 /home/steamuser/**dst** + 安装饥荒专用服务器并校验文件（只需要在第一次下载时校验）+ 退出
+3. 切换到 steamuser（注意**涉及到运行脚本均以 steamuser 身份运行**）
+4. 运行 steamcmd 脚本 + 以匿名账户登录 SteamCMD + 设定安装目录为 /home/steamuser/**dst** + 安装饥荒专用服务器并校验文件（只需要在第一次下载时校验）+ 退出
 
 ```
 mkdir /home/steamuser/Steam && cd /home/steamuser/Steam
 
 curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | tar zxvf -
 
+su - steamuser
+
 ./steamcmd.sh +login anonymous +force_install_dir /home/steamuser/dst +app_update 343050 validate +quit
 ```
 
 ## 写一个启动脚本
-
-注意**涉及到运行脚本均以 steamuser 身份运行**
-
 ```
-su - steamuser
 cd /home/steamuser/dst/bin
 ldd dontstarve_dedicated_server_nullrenderer
 ./dontstarve_dedicated_server_nullrenderer
 ```
 
-> 如果没有报错说明依赖处理好了，等会的启动脚本需要依赖这个文件，如果有其他报错，参考[这里](http://blog.ttionya.com/article-1233.html)，或搜索该库文件属于哪个包（e.g. [curl-gnutls.so.4 属于哪个包？](https://stackoverflow.com/questions/37012612/how-to-create-lib-curl-gnutls-so-4#comment67924043_39318677)）
+> 如果没有报错说明依赖处理好了，启动脚本需要依赖这个`dontstarve_dedicated_server_nullrenderer`，如果有其他报错，参考[这里](http://blog.ttionya.com/article-1233.html)，或搜索该库文件属于哪个包（e.g. [curl-gnutls.so.4 属于哪个包？](https://stackoverflow.com/questions/37012612/how-to-create-lib-curl-gnutls-so-4#comment67924043_39318677)）
 
 写入启动脚本，这里不管洞穴只写主世界，保存为 start.sh（名字随意，如果保存不了加 sudo）
 
@@ -80,7 +79,7 @@ echo ./dontstarve_dedicated_server_nullrenderer -console -cluster MyDediServer -
 sh start.sh
 ```
 
-脚本会开始运行，待出现 Your Server Will Not Start 字样后，按 Ctrl+C 终止脚本进程。此时运行了一遍没有配置文件的服务器，在 /home/steamuser/ 下生成了文件夹 .klei 。主要目录结构和本地存档大致相同，如下所示（tree -d 命令）。如果运行了洞穴的启动脚本还会有括号里的 Cave 目录。
+脚本会开始运行，待出现 Your Server Will Not Start 字样后，按 Ctrl+C 终止脚本进程。此时运行了一遍没有配置文件的服务器，在 /home/steamuser/ 下有文件夹 .klei 。主要目录结构和本地存档大致相同，如下所示（tree -d 命令）。如果运行了洞穴的启动脚本还会有括号里的 Cave 目录。
 
 ```
 .klei
@@ -95,9 +94,10 @@ sh start.sh
      └── Cluster_1 …
 ```
 
-然后再删除多余的目录
+然后退出 steamuser，再删除多余的 Cluster 目录
 
 ```
+exit
 rm -rf ~/.klei/DoNotStarveTogether/Cluster_*
 ```
 
@@ -130,7 +130,7 @@ rm -rf ~/.klei/DoNotStarveTogether/Cluster_*
 └── dedicated_server_mods_setup.lua
 ```
 
-### 获取 token
+### 获取 server_token
 ![Step1](./image/Main.png)
 
 ![Step2](./image/Webpage1.png)
@@ -139,14 +139,14 @@ rm -rf ~/.klei/DoNotStarveTogether/Cluster_*
 
 ![Step4](./image/Webpage3.png)
 
-将得到的 token 复制到文本编辑器备用
+将得到的 token_key 复制到文本编辑器备用
 
 ### 放入文件
 
 ```
 cd home/dst/.klei/DoNotStarveTogether/MyDediServer
 wget https://raw.githubusercontent.com/WhitePlumage/DST_Dedicated_Server_Configration/master/Scripts/cluster.ini
-echo [复制的 token_key] > cluster_token.txt
+echo [保存的 token_key] > cluster_token.txt
 
 cd Master
 wget https://raw.githubusercontent.com/WhitePlumage/DST_Dedicated_Server_Configration/master/Scripts/worldgenoverride.lua
