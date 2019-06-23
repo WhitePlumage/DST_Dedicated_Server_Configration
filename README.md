@@ -45,6 +45,7 @@ sudo apt-get install libstdc++6 libgcc1 libcurl4-gnutls-dev
 useradd -m steamuser && sudo usermod -aG sudo username
 passwd steamuser
 ```
+（删掉用户重来用`userdel -fr 用户名`）
 
 还是以 root 身份进行下列操作
 1. 进入 steamuser 的主目录，新建一个 Steam 目录用来解压 SteamCMD 的安装包（SteamCMD 安装完会生成一个 Steam 文件夹，所以不如干脆使用 Steam 解压安装包）
@@ -144,15 +145,15 @@ rm -rf ~/.klei/DoNotStarveTogether/Cluster_*
 
 ```
 cd home/dst/.klei/DoNotStarveTogether/MyDediServer
-wget https://raw.githubusercontent.com/WhitePlumage/DST_Dedicate_Server_Configration/master/Scripts/cluster.ini
+wget https://raw.githubusercontent.com/WhitePlumage/DST_Dedicated_Server_Configration/master/Scripts/cluster.ini
 echo [复制的 token_key] > cluster_token.txt
 
 cd Master
-wget https://raw.githubusercontent.com/WhitePlumage/DST_Dedicate_Server_Configration/master/Scripts/worldgenoverride.lua
-wget https://raw.githubusercontent.com/WhitePlumage/DST_Dedicate_Server_Configration/master/Scripts/modoverrides.lua
+wget https://raw.githubusercontent.com/WhitePlumage/DST_Dedicated_Server_Configration/master/Scripts/worldgenoverride.lua
+wget https://raw.githubusercontent.com/WhitePlumage/DST_Dedicated_Server_Configration/master/Scripts/modoverrides.lua
 
 cd /home/steamuser/dst/mods
-wget https://raw.githubusercontent.com/WhitePlumage/DST_Dedicate_Server_Configration/master/Scripts/dedicated_server_mods_setup.lua
+wget https://raw.githubusercontent.com/WhitePlumage/DST_Dedicated_Server_Configration/master/Scripts/dedicated_server_mods_setup.lua
 ```
 放完之后可以`cd /home/steamuser/.klei/DoNotStarveTogether/MyDediServer && tree`和`cd /home/steamuser/dst/mods && ls`确认一下
 
