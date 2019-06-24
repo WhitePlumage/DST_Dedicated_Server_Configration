@@ -35,7 +35,17 @@ sudo apt-get install libstdc++6:i386 libgcc1:i386 libcurl4-gnutls-dev:i386
 # For a 32-bit machine:
 sudo apt-get install libstdc++6 libgcc1 libcurl4-gnutls-dev
 ```
-实测libgcc1可以安装 amd64 版。
+但是一般 apt-get 都会提示找不到包。。可以把`libgcc1:i386`换成`lib32gcc1`、`libstdc++6:i386`换成`lib32stdc++6`试试。最后成功与否是运行[这里的命令](ttps://github.com/WhitePlumage/DST_Dedicated_Server_Configration/blob/master/README.md#%E5%86%99%E4%B8%80%E4%B8%AA%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC)根据报错[处理](http://blog.ttionya.com/article-1233.html)，无报错就成功了。
+
+然后 **curl 是万恶之源**，不要一开始就`agt-get install curl`，这些命令一个个试。。总会成功的。。
+
+```
+dpkg --add-architecture i386
+apt-get update
+apt-get install libcurl3-gnutls:i386
+apt-get install libcurl4-gnutls-dev:i386    # libcurl4 依赖 libcurl3
+apt-get install libcurl4-gnutls:i386
+```
 
 ## 安装 SteamCMD
 
