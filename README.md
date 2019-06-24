@@ -126,7 +126,7 @@ rm -rf /home/steamuser/.klei/DoNotStarveTogether/Cluster_*
 - server.ini (服务器配置，一般不改)
 - worldgenoverride.lua (世界配置，定义时间、季节、生物等，可以在本地存档里找到)
 - dedicated_server_mods_setup.lua (需要下载哪些 mod，id 可以在 modoverrides.lua 里找)
-- modoverrides.lua (mod 的配置，可以在本地存档里找到)
+- modoverrides.lua (mod 的配置，可以在本地存档的 Master 里找到)
 [详细配置参考](http://blog.ttionya.com/article-1235.html)
 
 ```
