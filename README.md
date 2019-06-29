@@ -251,7 +251,7 @@ $ screen -r dst1
 $ ^C
 [screen is terminating]
 $ cd dst/bin
-screen -S dst1 sudo sh start.sh
+$ screen -S dst1 sudo sh start.sh
 ```
 
 运行后可以查看日志，或按 `Ctrl+A, d` detach 这个窗口。
