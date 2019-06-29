@@ -179,7 +179,7 @@ wget https://raw.githubusercontent.com/WhitePlumage/DST_Dedicated_Server_Configr
 ### 再运行一遍启动脚本
 保证在**steamuser**下运行
 
-这里我们用到 screen 命令会在[重启服务器]()部分有详细解释。
+这里我们用到 screen 命令会在[screen](./README.md#screen)部分有详细解释。
 
 ```
 cd ~/dst/bin
@@ -224,7 +224,7 @@ screen 后接的参数一般有
 | -v                                   | 显示 screen 版本信息                                         |
 | -wipe [match]                        | 同 - list，但删掉那些无法连接的会话                          |
 
-默认情况下，在 **screen 窗口中**，screen 接收按下 Ctrl + A(`^A`) 之后的命令，例如按下 Ctrl + A（不会有任何反应）后输入 `?`，会显示这里的所有可用命令。
+默认情况下，在 **screen 窗口中**，screen 接收按下 Ctrl + A (`^A`) 之后的命令，例如按下 Ctrl + A（此处不会有任何反应）后输入 `?`，会显示这里的所有可用命令。
 
 这里可能用到的命令有：
 
@@ -247,7 +247,7 @@ $ cd dst/bin
 screen -S dst1 sudo sh start.sh
 ```
 
-运行后可以查看日志，或按 `Ctrl+A, d ` detach 这个窗口。
+运行后可以查看日志，或按 `Ctrl+A, d` detach 这个窗口。
 
 方便起见，我们还可以写一个脚本 restart.sh 来完成上述过程：[restart.sh](https://github.com/WhitePlumage/DST_Dedicated_Server_Configration/blob/master/Scripts/restart.sh)（修改自[这里](https://steamcommunity.com/sharedfiles/filedetails/?id=590565473)）
 
