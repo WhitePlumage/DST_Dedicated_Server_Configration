@@ -55,10 +55,10 @@ return {
   },
   ["workshop-1750657150"]={
     configuration_options={
-      amount_of_numbers="default",
-      display_mode="waving",
+      amount_of_numbers="low",
+      display_mode="straight",
       dmg_only="on",
-      number_size="default",
+      number_size="tiny",
       show_beaverness="off",
       show_decimal_points="no",
       show_fueled="off",
@@ -66,7 +66,7 @@ return {
       show_moisture="off",
       show_sanity="off",
       show_work="off",
-      size_scale="default" 
+      size_scale="off" 
     },
     enabled=true 
   },
