@@ -193,7 +193,8 @@ cd ~/dst/bin
 screen -S dst1 sudo sh start.sh
 ```
 
-在以 screen 运行了脚本后按 Ctrl+A 之后按一次 d，就可以退出 steamuser 了（不要用 exit，会退出窗口进程，直接输入 `su` 再输入 root 密码）
+在以 screen 运行了脚本后按 Ctrl+A 之后按一次 d，就可以退出 steamuser 了。
+
 
 ## 重启服务器
 
