@@ -183,8 +183,8 @@ wget https://raw.githubusercontent.com/WhitePlumage/DST_Dedicated_Server_Configr
 ```
 放完之后可以 `cd /home/steamuser/.klei/DoNotStarveTogether/MyDediServer && tree` 和 `cd /home/steamuser/dst/mods && ls` 确认一下
 
-### 再运行一遍启动脚本
-保证在**steamuser**下运行
+## 再运行一遍启动脚本
+保证在 **steamuser** 下运行
 
 这里我们用到 screen 命令会在 [screen](./README.md#screen) 部分有详细解释。
 
