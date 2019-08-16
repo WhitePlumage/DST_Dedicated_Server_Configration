@@ -12,9 +12,9 @@
 
 > 这里服务器的配置（cluster.ini 等）是我个人的服务器，保存在 [Scripts](https://github.com/WhitePlumage/DST_Dedicated_Server_Configration/tree/master/Scripts) 里，根据需要更改。
 > 
-> 务必一次成功，最后跑不起来就 `userdel -fr steamuser` 再 `reboot` 一遍。
+> 务必一次成功，最后跑不起来就 `userdel -rf steamuser` 再 `reboot` 重来。
 > 
-> 搞懂了每条命令具体干什么之后可以参照[只有命令的脚本](https://github.com/WhitePlumage/DST_Dedicated_Server_Configration/blob/master/Scripts/%E8%A7%A3%E5%86%B3%E5%A5%BD%E4%BE%9D%E8%B5%96%E4%B9%8B%E5%90%8E%E7%9A%84%E5%91%BD%E4%BB%A4.sh) (不能当真的脚本用的)，拷到文本编辑器里复制命令更加方便。
+> 搞懂了每条命令具体干什么之后可以参照[只有命令的脚本](https://github.com/WhitePlumage/DST_Dedicated_Server_Configration/blob/master/Scripts/%E8%A7%A3%E5%86%B3%E5%A5%BD%E4%BE%9D%E8%B5%96%E4%B9%8B%E5%90%8E%E7%9A%84%E5%91%BD%E4%BB%A4.sh) (不能当真的脚本用)，拷到文本编辑器里复制命令更加方便。
 > 
 > 顺带一提，不管是 `ls` 还是 `tree` 在后面加 `-a` 就可以看见隐藏文件（夹）了
 
@@ -22,7 +22,7 @@
 
 这里的操作都基于 Debian 及其发行版 (Ubuntu)。
 
-## 处理依赖库
+## 处理依赖库（玄学）
 
 首先处理依赖库以保证安装的顺利。如果你碰到了什么问题，多半是运行库的锅。注意 Steam 需要的所有库**都是 *i386*** 而不是 *amd64* 版的。
 
@@ -35,7 +35,7 @@ sudo apt-get install libstdc++6:i386 libgcc1:i386 libcurl4-gnutls-dev:i386
 # For a 32-bit machine:
 sudo apt-get install libstdc++6 libgcc1 libcurl4-gnutls-dev
 ```
-但是一般 apt-get 都会提示找不到包。。可以把 `libgcc1:i386` 换成 `lib32gcc1`、`libstdc++6:i386` 换成 `lib32stdc++6` 试试。最后成功与否是运行[这里的命令](./README.md#%E5%86%99%E4%B8%80%E4%B8%AA%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC)根据报错[处理](http://blog.ttionya.com/article-1233.html)，无报错就成功了。
+但是 apt-get 通常会提示找不到包。。可以把 `libgcc1:i386` 换成 `lib32gcc1`、`libstdc++6:i386` 换成 `lib32stdc++6` 试试。最后成功与否是运行[这里的命令](./README.md#%E5%86%99%E4%B8%80%E4%B8%AA%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC)根据报错[处理](http://blog.ttionya.com/article-1233.html)，无报错就成功了。
 
 然后 **curl 是万恶之源**，不要一开始就 `agt-get install curl`，这些命令一个个试。。总会成功的。。
 
@@ -156,13 +156,13 @@ rm -rf /home/steamuser/.klei/DoNotStarveTogether/Cluster_*
 ```
 
 ### 获取 server_token
-![Step1](./image/Main.png)
+![Step1](https://raw.githubusercontent.com/WhitePlumage/DST_Dedicated_Server_Configration/master/image/Main.png)
 
-![Step2](./image/Webpage1.png)
+![Step2](https://raw.githubusercontent.com/WhitePlumage/DST_Dedicated_Server_Configration/master/image/Webpage1.png)
 
-![Step3](./image/Webpage2.png)
+![Step3](https://raw.githubusercontent.com/WhitePlumage/DST_Dedicated_Server_Configration/master/image/Webpage2.png)
 
-![Step4](./image/Webpage3.png)
+![Step4](https://raw.githubusercontent.com/WhitePlumage/DST_Dedicated_Server_Configration/master/image/Webpage3.png)
 
 将得到的 token_key 复制到文本编辑器备用
 
@@ -198,7 +198,7 @@ screen -S dst1 sudo sh start.sh
 
 ## 重启服务器
 
-当出现通信问题，或需要更新 mod 时，都需要重启服务器。（一些 mod 需要服务器和客户端的版本相同，如果服务器端不更新将无法进入游戏）首先解释一下要用到的 screen 用法。
+当出现通信问题，或需要更新游戏和 mod 时，都需要重启服务器。（一些 mod 需要服务器和客户端的版本相同，如果服务器端不更新将无法进入游戏）首先解释一下要用到的 screen 用法。
 
 ### screen
 
@@ -251,7 +251,9 @@ screen 后接的参数一般有
 $ screen -r dst1
 $ ^C
 [screen is terminating]
-$ cd dst/bin
+（更新游戏）
+$ sudo ~/Steam/steamcmd.sh +login anonymous +force_install_dir /home/steamuser/dst +app_update 343050 validate +quit
+$ cd ~/dst/bin
 $ screen -S dst1 sudo sh start.sh
 ```
 
