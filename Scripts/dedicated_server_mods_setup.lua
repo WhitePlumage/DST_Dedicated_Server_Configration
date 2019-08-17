@@ -11,6 +11,7 @@
     --ServerModCollectionSetup("379114180")
      
 ServerModSetup("1079538195")    --移动盒子
+ServerModSetup("1185229307")    --史诗血量条
 ServerModSetup("1301033176")    --中文语言包（服务器版）
 ServerModSetup("1530801499")    --Fast Travel (with ui)
 ServerModSetup("1458450094")    --Auto Trap Reset
