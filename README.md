@@ -253,8 +253,7 @@ $ ^C
 [screen is terminating]
 （更新游戏）
 $ sudo ~/Steam/steamcmd.sh +login anonymous +force_install_dir /home/steamuser/dst +app_update 343050 validate +quit
-$ cd ~/dst/bin
-$ screen -S dst1 sudo sh start.sh
+$ cd ~/dst/bin && screen -S dst1 sudo sh start.sh
 ```
 
 运行后可以查看日志，或按 `Ctrl+A, d` detach 这个窗口。
