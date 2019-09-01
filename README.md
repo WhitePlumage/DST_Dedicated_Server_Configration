@@ -8,7 +8,7 @@
 > 
 > http://blog.ttionya.com/article-1235.html
 > 
-> [Klei 论坛的教程](https://forums.kleientertainment.com/forums/topic/64441-dedicated-server-quick-setup-guide-linux/)
+> [Klei 官方教程](https://forums.kleientertainment.com/forums/topic/64441-dedicated-server-quick-setup-guide-linux/)
 
 > 这里服务器的配置（cluster.ini 等）是我个人的服务器，保存在 [Scripts](https://github.com/WhitePlumage/DST_Dedicated_Server_Configration/tree/master/Scripts) 里，根据需要更改。
 > 
