@@ -37,6 +37,10 @@ return {
     enabled=true 
   },
   ["workshop-1185229307"]={ configuration_options={  }, enabled=true },
+  ["workshop-1216718131"]={
+    configuration_options={ clean=true, lang=true, stack=true },
+    enabled=true 
+  },
   ["workshop-1301033176"]={ configuration_options={ LANG="simplified" }, enabled=true },
   ["workshop-1530801499"]={
     configuration_options={ Hunger_Cost=1, Ownership=false, Sanity_Cost=1 },
