@@ -22,9 +22,9 @@
 
 这里的操作都基于 Debian 及其发行版 (Ubuntu)。
 
-## 处理依赖库（玄学）
+## 处理依赖关系（玄学操作，不要当真）
 
-首先处理依赖库以保证安装的顺利。如果你碰到了什么问题，多半是运行库的锅。注意 Steam 需要的所有库**都是 *i386*** 而不是 *amd64* 版的。
+首先处理依赖关系以保证安装的顺利。如果你碰到了什么问题，多半是各种包的锅。注意 Steam 需要的运行环境**是 *i386*** 而不是 *amd64* 版的。
 
 按照 [Klei 推荐的教程](https://forums.kleientertainment.com/forums/topic/64441-dedicated-server-quick-setup-guide-linux/)，需要的库有libstdc++6，libgcc1，libcurl4-gnutls-dev
 
@@ -35,7 +35,7 @@ sudo apt-get install libstdc++6:i386 libgcc1:i386 libcurl4-gnutls-dev:i386
 # For a 32-bit machine:
 sudo apt-get install libstdc++6 libgcc1 libcurl4-gnutls-dev
 ```
-但是 apt-get 通常会提示找不到包。。可以把 `libgcc1:i386` 换成 `lib32gcc1`、`libstdc++6:i386` 换成 `lib32stdc++6` 试试。最后成功与否是运行[这里的命令](./README.md#%E5%86%99%E4%B8%80%E4%B8%AA%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC)根据报错[处理](http://blog.ttionya.com/article-1233.html)，无报错就成功了。
+但是 apt-get 可能会提示找不到包。。可以把 `libgcc1:i386` 换成 `lib32gcc1`、`libstdc++6:i386` 换成 `lib32stdc++6` 试试。最后成功与否是运行[这里的命令](./README.md#%E5%86%99%E4%B8%80%E4%B8%AA%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC)根据报错[处理](http://blog.ttionya.com/article-1233.html)，无报错就成功了。
 
 然后 **curl 是万恶之源**，不要一开始就 `agt-get install curl`，这些命令一个个试。。总会成功的。。
 
